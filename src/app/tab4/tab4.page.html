@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <div class="title">
+        <div class="greeting">Good Morning, User</div>
+        <ion-icon name="person-outline" class="profile-icon"></ion-icon>
+      </div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let item of items">
+      <ion-thumbnail slot="start">
+        <img [src]="item.image" alt="Item Image" class="item-image">
+      </ion-thumbnail>
+      <ion-label>
+        <h2 *ngIf="!item.editing" (click)="editItem(item)">{{ item.title }}</h2>
+        <ion-input [(ngModel)]="item.editTitle" *ngIf="item.editing"></ion-input>
+        <p>{{ item.description }}</p>
+      </ion-label>
+      <ion-button *ngIf="!item.editing" (click)="deleteItem(item)" color="danger" slot="end">Delete</ion-button>
+      <ion-button *ngIf="item.editing" (click)="saveItem(item)" color="success" slot="end">Save</ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ion-item>
+    <ion-label position="floating">Title</ion-label>
+    <ion-input [(ngModel)]="newItem.title"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Description</ion-label>
+    <ion-input [(ngModel)]="newItem.description"></ion-input>
+  </ion-item>
+  <input type="file" (change)="handleFileInput($event)">
+  <ion-button (click)="addItem()" expand="full">Add Item</ion-button>
+</ion-content>

@@ -1,0 +1,61 @@
+.title{
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .greeting {
+    font-size: 16px;
+    margin-left: 0px;
+    margin-right: 100px;
+    color: black;
+  }
+  
+  .profile-icon {
+    font-size: 24px;
+    margin-left: 100px;
+    color: black;
+  }
+  .search-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+  }
+  
+  ion-button.search-button {
+    --ion-color-primary: black;
+    --ion-color-primary-contrast: white;
+  }
+  
+  
+  .no-result {
+    text-align: center;
+    margin-top: 20px;
+    color: gray;
+  }
+  
+  .quantity-input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    margin-top: 15px;
+  }
+  
+  .quantity-input label {
+    margin-right: 10px;
+  }
+  
+  
+  .quantity-input input {
+    width: 50px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  canvas {
+    width: 100%;
+    height: 400px;
+  }
+  

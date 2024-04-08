@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <div class="title">
+        <div class="greeting">Good Morning, User</div>
+        <ion-icon name="person-outline" class="profile-icon"></ion-icon>
+      </div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar [(ngModel)]="searchText" (keydown)="handleKeyPress($event)"></ion-searchbar>
+
+  <ion-list *ngIf="filteredRestaurants.length > 0">
+    <ion-item *ngFor="let restaurant of filteredRestaurants" (click)="goToRestaurant(restaurant)">
+      <ion-thumbnail slot="start">
+        <img [src]="restaurant.image">
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ restaurant.name }}</h2>
+        <p>{{ restaurant.description }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <div class="no-result" *ngIf="filteredRestaurants.length === 0 && searchText.length > 0">
+    No results found.
+  </div>
+
+  <div>
+    <canvas #chartCanvas></canvas>
+  </div>
+
+  <div class="quantity-input">
+    <label for="burgerQuantity">Burger:</label>
+    <input type="number" id="burgerQuantity" [(ngModel)]="burgerQuantity" (input)="updateChartData()">
+  </div>
+
+  <div class="quantity-input">
+    <label for="pizzaQuantity">Pizza:</label>
+    <input type="number" id="pizzaQuantity" [(ngModel)]="pizzaQuantity" (input)="updateChartData()">
+  </div>
+
+  <div class="quantity-input">
+    <label for="saladQuantity">Salad:</label>
+    <input type="number" id="saladQuantity" [(ngModel)]="saladQuantity" (input)="updateChartData()">
+  </div>
+</ion-content>

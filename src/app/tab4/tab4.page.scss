@@ -1,0 +1,22 @@
+.item-image {
+    width: 55px; /* Adjust the width as per your requirement */
+    height: 55px; /* Adjust the height as per your requirement */
+    object-fit: contain;
+  }
+  .title{
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .greeting {
+    font-size: 16px;
+    margin-left: 0px;
+    margin-right: 100px;
+    color: black;
+  }
+  
+  .profile-icon {
+    font-size: 24px;
+    margin-left: 100px;
+    color: black;
+  }

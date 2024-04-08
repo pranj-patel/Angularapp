@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <div class="title">
+        <div class="greeting">Good Morning, User</div>
+        <ion-icon name="person-outline" class="profile-icon"></ion-icon>
+      </div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let item of addedItems">
+      <ion-thumbnail slot="start">
+        <img [src]="item.image" alt="{{ item.name }}">
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ item.name }}</h2>
+        <p>{{ item.description }}</p>
+        <p>Price: ${{ item.price }}</p>
+      </ion-label>
+      <ion-icon name="trash" slot="end" (click)="removeItem(item)"></ion-icon>
+    </ion-item>
+  </ion-list>
+
+  <ion-item>
+    <ion-label>Total:</ion-label>
+    <ion-label slot="end">${{ total }}</ion-label>
+  </ion-item>
+
+  <ion-button expand="full" (click)="continueShopping()">Continue Shopping</ion-button>
+
+  <ion-button expand="full" (click)="orderNow()">Order Now</ion-button>
+
+  <div class="past-orders">
+    <h2>Last Orders:</h2>
+    <ion-list>
+      <ion-item *ngFor="let order of getLastThreeOrders()" class="order-item">
+        <ion-label>
+          <p>Order: {{ getOrderItemsString(order.items) }}</p>
+          <p>Total: {{ order.total }}</p>
+          <p>Timestamp: {{ order.timestamp }}</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div class="item-count">
+    <h2>Item Counts:</h2>
+    <p>Burger: {{ burgerCount }}</p>
+    <p>Salad: {{ saladCount }}</p>
+    <p>Pizza: {{ pizzaCount }}</p>
+  </div>
+</ion-content>

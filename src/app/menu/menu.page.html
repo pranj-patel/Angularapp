@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tab1"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ restaurant?.name }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-img [src]="restaurant?.image" alt="{{ restaurant?.name }}"></ion-img>
+    <ion-card-content>
+      <ion-card-title>{{ restaurant?.name }}</ion-card-title>
+      <ion-card-subtitle>{{ restaurant?.description }}</ion-card-subtitle>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-list>
+    <ion-item *ngFor="let item of menuItems">
+      <ion-thumbnail slot="start">
+        <ion-img [src]="item?.image" alt="{{ item?.name }}"></ion-img>
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ item?.name }}</h2>
+        <p>{{ item?.description }}</p>
+        <p>Price: ${{ item?.price }}</p>
+      </ion-label>
+      <ion-button expand="block" (click)="addToCart(item)">Add to Cart</ion-button>
+    </ion-item>
+  </ion-list>
+
+  <!-- Add map component to show location -->
+  <div id="map" style="height: 300px;"></div>
+
+  <ion-item>
+    <ion-label position="stacked">Name</ion-label>
+    <ion-input [(ngModel)]="booking.name" placeholder="Enter your name"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Number of People</ion-label>
+    <ion-input type="number" [(ngModel)]="booking.partySize" placeholder="Enter number of people"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Time</ion-label>
+    <ion-datetime display-format="h:mm A" picker-format="h:mm A" [(ngModel)]="booking.time"></ion-datetime>
+  </ion-item>
+
+  <ion-button expand="block" (click)="bookTable()">Book Table</ion-button>
+  <ion-button expand="block" (click)="viewCart()">View Cart</ion-button>
+</ion-content>

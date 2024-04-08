@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <div class="title">
+        <div class="greeting">Good Morning, User</div>
+        <ion-icon name="person-outline" class="profile-icon"></ion-icon>
+      </div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="profile-container">
+    <div class="profile-image">
+      <div class="profile-photo-container">
+        <img [src]="profilePhoto" alt="Profile Photo" *ngIf="profilePhoto">
+        <ion-icon name="person-circle-outline" *ngIf="!profilePhoto"></ion-icon>
+      </div>
+      <input type="file" (change)="onFileChange($event)" accept="image/*" capture="camera" style="display: none" #fileInput>
+      <ion-button (click)="fileInput.click()" fill="clear" class="choose-file-button">
+        <ion-icon name="camera"></ion-icon> Choose File
+      </ion-button>
+    </div>
+    <div class="input-container">
+      <ion-item>
+        <ion-label position="floating">Username</ion-label>
+        <ion-input type="text" [(ngModel)]="username"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="email" [(ngModel)]="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Date of Birth</ion-label>
+        <ion-datetime displayFormat="DD MMM YYYY" pickerFormat="DD MMM YYYY" [(ngModel)]="dob"></ion-datetime>
+      </ion-item>
+    </div>
+    <div class="gender-container">
+      <ion-label class="gender-label">Gender:</ion-label>
+      <ion-radio-group value="Male">
+        <ion-item>
+          <ion-label>Female</ion-label>
+          <ion-radio slot="start" value="Female"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Male</ion-label>
+          <ion-radio slot="start" value="Male"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </div>
+    
+    <ion-button expand="full" (click)="saveProfile()">Save</ion-button>
+    <div *ngIf="showProfile">
+      <h2>Profile Details:</h2>
+      <p><strong>Username:</strong> {{ username }}</p>
+      <p><strong>Email:</strong> {{ email }}</p>
+      <p><strong>Date of Birth:</strong> {{ dob }}</p>
+    </div>
+  </div>
+</ion-content>
